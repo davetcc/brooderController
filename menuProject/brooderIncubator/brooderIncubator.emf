@@ -9,13 +9,13 @@
       "item": {
         "maxValue": 255,
         "offset": 0,
-        "divisor": 1,
+        "divisor": 2,
         "unitName": "oC",
         "name": "Temp",
         "variableName": "Temp",
         "id": 1,
         "eepromAddress": -1,
-        "readOnly": false,
+        "readOnly": true,
         "localOnly": false,
         "visible": true
       }
@@ -29,7 +29,7 @@
         "variableName": "Fan",
         "id": 2,
         "eepromAddress": -1,
-        "readOnly": false,
+        "readOnly": true,
         "localOnly": false,
         "visible": true
       }
@@ -54,7 +54,7 @@
       "item": {
         "maxValue": 255,
         "offset": 0,
-        "divisor": 1,
+        "divisor": 2,
         "unitName": "oC",
         "name": "Reqd Temp",
         "variableName": "SettingsReqdTemp",
@@ -69,10 +69,10 @@
       "parentId": 4,
       "type": "analogItem",
       "item": {
-        "maxValue": 95,
-        "offset": 90,
-        "divisor": 1,
-        "unitName": "%",
+        "maxValue": 6,
+        "offset": 0,
+        "divisor": 2,
+        "unitName": "oC",
         "name": "Accuracy",
         "variableName": "SettingsAccuracy",
         "id": 6,
@@ -93,24 +93,7 @@
         "name": "Mode",
         "variableName": "SettingsMode",
         "id": 8,
-        "eepromAddress": -1,
-        "readOnly": false,
-        "localOnly": false,
-        "visible": true
-      }
-    },
-    {
-      "parentId": 4,
-      "type": "analogItem",
-      "item": {
-        "maxValue": 255,
-        "offset": 0,
-        "divisor": 1,
-        "unitName": "oC",
-        "name": "Max Temp",
-        "variableName": "SettingsMaxTemp",
-        "id": 9,
-        "eepromAddress": -1,
+        "eepromAddress": 6,
         "readOnly": false,
         "localOnly": false,
         "visible": true
@@ -121,13 +104,12 @@
       "type": "enumItem",
       "item": {
         "enumEntries": [
-          "Hourly",
-          "30 mins",
-          "15 mins",
-          "Never"
+          "Auto",
+          "Manual",
+          "Off"
         ],
-        "name": "Auto Fan",
-        "variableName": "SettingsAutoFan",
+        "name": "Fan Mode",
+        "variableName": "SettingsFanMode",
         "id": 10,
         "eepromAddress": -1,
         "readOnly": false,
@@ -139,7 +121,7 @@
       "parentId": 0,
       "type": "boolItem",
       "item": {
-        "naming": "TRUE_FALSE",
+        "naming": "ON_OFF",
         "name": "Heat Lamp",
         "variableName": "HeatLamp",
         "id": 7,
@@ -158,7 +140,7 @@
         "variableName": "Buzzer",
         "id": 3,
         "eepromAddress": -1,
-        "readOnly": false,
+        "readOnly": true,
         "localOnly": false,
         "visible": true
       }
@@ -166,7 +148,7 @@
   ],
   "codeOptions": {
     "embeddedPlatform": "ARDUINO",
-    "lastDisplayUuid": "bcd5fe34-9e9f-4fcb-9edf-f4e3caca0674",
+    "lastDisplayUuid": "61f370f4-0294-41cf-8988-1458f242914a",
     "lastInputUuid": "6dd87e7d-e751-4912-a70d-91793b1d3d87",
     "lastRemoteUuid": "2c101fec-1f7d-4ff3-8d2b-992ad41e7fcb",
     "lastRemoteUuids": [
@@ -176,6 +158,61 @@
     "applicationUUID": "6212819e-acb2-43cc-9982-5574ea4f17c9",
     "applicationName": "Incubator",
     "lastProperties": [
+      {
+        "name": "LCD_WIDTH",
+        "latestValue": "16",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_HEIGHT",
+        "latestValue": "2",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_EN",
+        "latestValue": "7",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_RS",
+        "latestValue": "8",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_D4",
+        "latestValue": "9",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_D5",
+        "latestValue": "10",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_D6",
+        "latestValue": "11",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_D7",
+        "latestValue": "12",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_BACKLIGHT",
+        "latestValue": "-1",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_PWM_PIN",
+        "latestValue": "-1",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_IO_DEVICE",
+        "latestValue": "devicePins",
+        "subsystem": "DISPLAY"
+      },
       {
         "name": "UNO_OR_FULL",
         "latestValue": "unoLcd",
@@ -203,12 +240,12 @@
       },
       {
         "name": "ENCODER_PIN_B",
-        "latestValue": "A3",
+        "latestValue": "A5",
         "subsystem": "INPUT"
       },
       {
         "name": "ENCODER_PIN_OK",
-        "latestValue": "A2",
+        "latestValue": "A4",
         "subsystem": "INPUT"
       },
       {
@@ -235,7 +272,7 @@
     "namingRecursive": true,
     "saveToSrc": true,
     "useCppMain": true,
-    "eepromDefinition": "",
+    "eepromDefinition": "avr:",
     "authenticatorDefinition": "",
     "projectIoExpanders": [
       "deviceIO:"

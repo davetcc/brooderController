@@ -25,13 +25,13 @@ EN: A2
 
 This is taken from the PSU and will cause an immediate write to ROM. Input
 
-Pin: 13
+Pin: 5
 
 ### FAN Control
 
 The fan is current boosted by a transistor, output turns on fan.
 
-Pin: 5
+Pin: 13
 
 ### Heater control
 
@@ -43,5 +43,5 @@ Pin: 7
 
 The speaker is a small speaker connected to a PWM pin and pulsed.
 
-Pin: 8
+Pin: 6
 

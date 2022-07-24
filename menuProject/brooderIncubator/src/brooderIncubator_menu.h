@@ -14,8 +14,9 @@
 #include <Arduino.h>
 #include <tcMenu.h>
 #include <LiquidCrystalIO.h>
-#include "tcMenuLiquidCrystal.h"
 #include <IoAbstraction.h>
+#include <EepromAbstraction.h>
+#include "tcMenuLiquidCrystal.h"
 
 // variables we declare that you may need to access
 extern const PROGMEM ConnectorLocalInfo applicationInfo;
@@ -28,8 +29,7 @@ extern LiquidCrystalRenderer renderer;
 // Global Menu Item exports
 extern BooleanMenuItem menuBuzzer;
 extern BooleanMenuItem menuHeatLamp;
-extern EnumMenuItem menuSettingsAutoFan;
-extern AnalogMenuItem menuSettingsMaxTemp;
+extern EnumMenuItem menuSettingsFanMode;
 extern EnumMenuItem menuSettingsMode;
 extern AnalogMenuItem menuSettingsAccuracy;
 extern AnalogMenuItem menuSettingsReqdTemp;
