@@ -578,7 +578,7 @@ F 3 "" H 7900 1850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7900 1750 7900 1850
+	7900 1750 7900 1800
 Wire Wire Line
 	7000 1550 7150 1550
 Wire Wire Line
@@ -588,7 +588,7 @@ FAN+
 Text GLabel 7900 1150 0    50   Input ~ 0
 FAN-
 Wire Wire Line
-	7900 1350 7900 1150
+	7900 1350 7900 1250
 Wire Wire Line
 	7900 850  7900 1000
 Text GLabel 8900 1950 0    50   Input ~ 0
@@ -638,7 +638,7 @@ F 3 "" H 9800 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9800 2150 9800 2250
+	9800 2150 9800 2200
 Wire Wire Line
 	8900 1950 9050 1950
 Wire Wire Line
@@ -648,7 +648,7 @@ SPK+
 Text GLabel 9800 1150 0    50   Input ~ 0
 SPK-
 Wire Wire Line
-	9800 1750 9800 1550
+	9800 1750 9800 1650
 Wire Wire Line
 	9800 850  9800 1000
 $Comp
@@ -664,4 +664,50 @@ F 3 "~" H 9800 1400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	9800 1250 9800 1150
+$Comp
+L Device:D D5
+U 1 1 62DFD53F
+P 8350 1400
+F 0 "D5" V 8396 1320 50  0000 R CNN
+F 1 "D" V 8305 1320 50  0000 R CNN
+F 2 "" H 8350 1400 50  0001 C CNN
+F 3 "~" H 8350 1400 50  0001 C CNN
+	1    8350 1400
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:D D6
+U 1 1 62E02AFE
+P 10350 1800
+F 0 "D6" V 10396 1720 50  0000 R CNN
+F 1 "D" V 10305 1720 50  0000 R CNN
+F 2 "" H 10350 1800 50  0001 C CNN
+F 3 "~" H 10350 1800 50  0001 C CNN
+	1    10350 1800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8350 1250 7900 1250
+Connection ~ 7900 1250
+Wire Wire Line
+	7900 1250 7900 1150
+Wire Wire Line
+	8350 1550 8350 1800
+Wire Wire Line
+	8350 1800 7900 1800
+Connection ~ 7900 1800
+Wire Wire Line
+	7900 1800 7900 1850
+Wire Wire Line
+	10350 1950 10350 2200
+Wire Wire Line
+	10350 2200 9800 2200
+Connection ~ 9800 2200
+Wire Wire Line
+	9800 2200 9800 2250
+Wire Wire Line
+	10350 1650 9800 1650
+Connection ~ 9800 1650
+Wire Wire Line
+	9800 1650 9800 1550
 $EndSCHEMATC
