@@ -1,11 +1,11 @@
 #include "brooderIncubator_menu.h"
 #include "DallasTemperature.h"
 
-#define FAN_PIN 13
-#define PWR_OFF_DETECT 5
+#define FAN_PIN A3
+#define PWR_OFF_DETECT 3
 #define HEATER_PIN 4
 #define SPEAKER_PIN 6
-#define TEMP_DETECT_PIN 3
+#define TEMP_DETECT_PIN 5
 
 OneWire roomTempWire(TEMP_DETECT_PIN);
 DallasTemperature roomTemp(&roomTempWire);

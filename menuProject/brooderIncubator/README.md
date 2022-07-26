@@ -18,8 +18,8 @@ OK: A4
 Standard 16x2 LCD connected directly. Backlight always on. All outputs
 
 D0-D3: 9, 10, 11, 12 
-RS: A3
-EN: A2
+RS: 8
+EN: 7
 
 ### POWER_OFF
 
