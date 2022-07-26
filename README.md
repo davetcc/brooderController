@@ -13,3 +13,5 @@ The project is split into three sections:
 * brooderCircuit - contains the schematics
 * designs - contain a few paper based and tinkercad designs for the vero / patch board layout I used
 * menuProject - contains a tcMenu based sketch that builds in platformIO.
+
+In terms of wood working, the main cabinet is made out of regular WPB plywood, stained to the outside, painted white to the inside. The door is made from solid cedar wood, and the wooden part of the control panel was made from an offcut of solid 19mm oak. In terms of sizes you can work with whatever suits your situation, I went with approximately 400mm deep, 650mm wide, and approx 430mm high.
