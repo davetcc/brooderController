@@ -404,38 +404,23 @@ Wire Wire Line
 Wire Wire Line
 	1900 3800 4400 3800
 Connection ~ 1900 1950
-Text GLabel 2650 4150 0    50   Input ~ 0
+Text GLabel 3000 4350 0    50   Input ~ 0
 HEATER
 $Comp
 L Device:R R4
 U 1 1 62E3A9F0
 P 3000 4150
 F 0 "R4" V 2793 4150 50  0000 C CNN
-F 1 "470R" V 2884 4150 50  0000 C CNN
+F 1 "670R" V 2884 4150 50  0000 C CNN
 F 2 "" V 2930 4150 50  0001 C CNN
 F 3 "~" H 3000 4150 50  0001 C CNN
 	1    3000 4150
 	0    1    1    0   
 $EndComp
-$Comp
-L power:GND #PWR05
-U 1 1 62E3B65A
-P 3150 4450
-F 0 "#PWR05" H 3150 4200 50  0001 C CNN
-F 1 "GND" H 3155 4277 50  0000 C CNN
-F 2 "" H 3150 4450 50  0001 C CNN
-F 3 "" H 3150 4450 50  0001 C CNN
-	1    3150 4450
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2650 4150 2850 4150
 Wire Wire Line
 	3150 4150 3350 4150
-Wire Wire Line
-	3350 4350 3150 4350
-Wire Wire Line
-	3150 4350 3150 4450
 Wire Wire Line
 	4400 4150 4400 3800
 Connection ~ 4400 3800
@@ -699,4 +684,19 @@ $EndComp
 Connection ~ 5050 1650
 Wire Wire Line
 	5050 1650 5150 1650
+$Comp
+L power:+5V #PWR?
+U 1 1 62EC4FF6
+P 2650 4150
+F 0 "#PWR?" H 2650 4000 50  0001 C CNN
+F 1 "+5V" H 2665 4323 50  0000 C CNN
+F 2 "" H 2650 4150 50  0001 C CNN
+F 3 "" H 2650 4150 50  0001 C CNN
+	1    2650 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 4350 3000 4350
+Text Notes 2700 4550 0    50   ~ 0
+HEATER is active LOW
 $EndSCHEMATC
