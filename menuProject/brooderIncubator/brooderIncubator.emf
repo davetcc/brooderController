@@ -25,9 +25,23 @@
       "type": "boolItem",
       "item": {
         "naming": "ON_OFF",
-        "name": "Fan",
-        "variableName": "Fan",
-        "id": 2,
+        "name": "Heat Lamp",
+        "variableName": "HeatLamp",
+        "id": 7,
+        "eepromAddress": -1,
+        "readOnly": true,
+        "localOnly": false,
+        "visible": true
+      }
+    },
+    {
+      "parentId": 0,
+      "type": "boolItem",
+      "item": {
+        "naming": "ON_OFF",
+        "name": "Buzzer",
+        "variableName": "Buzzer",
+        "id": 3,
         "eepromAddress": -1,
         "readOnly": true,
         "localOnly": false,
@@ -101,46 +115,28 @@
     },
     {
       "parentId": 4,
-      "type": "enumItem",
+      "type": "boolItem",
       "item": {
-        "enumEntries": [
-          "Auto",
-          "Manual",
-          "Off"
-        ],
-        "name": "Fan Mode",
-        "variableName": "SettingsFanMode",
-        "id": 10,
-        "eepromAddress": -1,
+        "naming": "YES_NO",
+        "name": "Enable Buzzer",
+        "variableName": "SettingsEnableBuzzer",
+        "id": 9,
+        "eepromAddress": 8,
         "readOnly": false,
         "localOnly": false,
         "visible": true
       }
     },
     {
-      "parentId": 0,
-      "type": "boolItem",
+      "parentId": 4,
+      "type": "actionMenu",
       "item": {
-        "naming": "ON_OFF",
-        "name": "Heat Lamp",
-        "variableName": "HeatLamp",
-        "id": 7,
+        "name": "Save Settings",
+        "variableName": "SettingsSaveSettings",
+        "id": 10,
         "eepromAddress": -1,
-        "readOnly": true,
-        "localOnly": false,
-        "visible": true
-      }
-    },
-    {
-      "parentId": 0,
-      "type": "boolItem",
-      "item": {
-        "naming": "ON_OFF",
-        "name": "Buzzer",
-        "variableName": "Buzzer",
-        "id": 3,
-        "eepromAddress": -1,
-        "readOnly": true,
+        "functionName": "onSaveSettings",
+        "readOnly": false,
         "localOnly": false,
         "visible": true
       }

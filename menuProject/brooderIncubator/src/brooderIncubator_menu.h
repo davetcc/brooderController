@@ -27,15 +27,15 @@ extern LiquidCrystalRenderer renderer;
 
 
 // Global Menu Item exports
-extern BooleanMenuItem menuBuzzer;
-extern BooleanMenuItem menuHeatLamp;
-extern EnumMenuItem menuSettingsFanMode;
+extern ActionMenuItem menuSettingsSaveSettings;
+extern BooleanMenuItem menuSettingsEnableBuzzer;
 extern EnumMenuItem menuSettingsMode;
 extern AnalogMenuItem menuSettingsAccuracy;
 extern AnalogMenuItem menuSettingsReqdTemp;
 extern BackMenuItem menuBackSettings;
 extern SubMenuItem menuSettings;
-extern BooleanMenuItem menuFan;
+extern BooleanMenuItem menuBuzzer;
+extern BooleanMenuItem menuHeatLamp;
 extern AnalogMenuItem menuTemp;
 
 // Provide a wrapper to get hold of the root menu item and export setupMenu
@@ -45,5 +45,6 @@ void setupMenu();
 // Callback functions must always include CALLBACK_FUNCTION after the return type
 #define CALLBACK_FUNCTION
 
+void CALLBACK_FUNCTION onSaveSettings(int id);
 
 #endif // MENU_GENERATED_CODE_H

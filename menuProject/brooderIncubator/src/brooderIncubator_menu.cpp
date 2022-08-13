@@ -18,21 +18,15 @@ LiquidCrystal lcd(8, 7, 9, 10, 11, 12);
 LiquidCrystalRenderer renderer(lcd, 16, 2);
 
 // Global Menu Item declarations
-const PROGMEM BooleanMenuInfo minfoBuzzer = { "Buzzer", 3, 0xffff, 1, NO_CALLBACK, NAMING_ON_OFF };
-BooleanMenuItem menuBuzzer(&minfoBuzzer, false, NULL);
-const PROGMEM BooleanMenuInfo minfoHeatLamp = { "Heat Lamp", 7, 0xffff, 1, NO_CALLBACK, NAMING_ON_OFF };
-BooleanMenuItem menuHeatLamp(&minfoHeatLamp, false, &menuBuzzer);
-const char enumStrSettingsFanMode_0[] PROGMEM = "Auto";
-const char enumStrSettingsFanMode_1[] PROGMEM = "Manual";
-const char enumStrSettingsFanMode_2[] PROGMEM = "Off";
-const char* const enumStrSettingsFanMode[] PROGMEM  = { enumStrSettingsFanMode_0, enumStrSettingsFanMode_1, enumStrSettingsFanMode_2 };
-const PROGMEM EnumMenuInfo minfoSettingsFanMode = { "Fan Mode", 10, 0xffff, 2, NO_CALLBACK, enumStrSettingsFanMode };
-EnumMenuItem menuSettingsFanMode(&minfoSettingsFanMode, 0, NULL);
+const PROGMEM AnyMenuInfo minfoSettingsSaveSettings = { "Save Settings", 10, 0xffff, 0, onSaveSettings };
+ActionMenuItem menuSettingsSaveSettings(&minfoSettingsSaveSettings, NULL);
+const PROGMEM BooleanMenuInfo minfoSettingsEnableBuzzer = { "Enable Buzzer", 9, 8, 1, NO_CALLBACK, NAMING_YES_NO };
+BooleanMenuItem menuSettingsEnableBuzzer(&minfoSettingsEnableBuzzer, false, &menuSettingsSaveSettings);
 const char enumStrSettingsMode_0[] PROGMEM = "Brooder";
 const char enumStrSettingsMode_1[] PROGMEM = "Incubator";
 const char* const enumStrSettingsMode[] PROGMEM  = { enumStrSettingsMode_0, enumStrSettingsMode_1 };
 const PROGMEM EnumMenuInfo minfoSettingsMode = { "Mode", 8, 6, 1, NO_CALLBACK, enumStrSettingsMode };
-EnumMenuItem menuSettingsMode(&minfoSettingsMode, 0, &menuSettingsFanMode);
+EnumMenuItem menuSettingsMode(&minfoSettingsMode, 0, &menuSettingsEnableBuzzer);
 const PROGMEM AnalogMenuInfo minfoSettingsAccuracy = { "Accuracy", 6, 4, 6, NO_CALLBACK, 0, 2, "oC" };
 AnalogMenuItem menuSettingsAccuracy(&minfoSettingsAccuracy, 0, &menuSettingsMode);
 const PROGMEM AnalogMenuInfo minfoSettingsReqdTemp = { "Reqd Temp", 5, 2, 255, NO_CALLBACK, 0, 2, "oC" };
@@ -40,18 +34,19 @@ AnalogMenuItem menuSettingsReqdTemp(&minfoSettingsReqdTemp, 0, &menuSettingsAccu
 RENDERING_CALLBACK_NAME_INVOKE(fnSettingsRtCall, backSubItemRenderFn, "Settings", -1, NO_CALLBACK)
 const PROGMEM SubMenuInfo minfoSettings = { "Settings", 4, 0xffff, 0, NO_CALLBACK };
 BackMenuItem menuBackSettings(fnSettingsRtCall, &menuSettingsReqdTemp);
-SubMenuItem menuSettings(&minfoSettings, &menuBackSettings, &menuHeatLamp);
-const PROGMEM BooleanMenuInfo minfoFan = { "Fan", 2, 0xffff, 1, NO_CALLBACK, NAMING_ON_OFF };
-BooleanMenuItem menuFan(&minfoFan, false, &menuSettings);
+SubMenuItem menuSettings(&minfoSettings, &menuBackSettings, NULL);
+const PROGMEM BooleanMenuInfo minfoBuzzer = { "Buzzer", 3, 0xffff, 1, NO_CALLBACK, NAMING_ON_OFF };
+BooleanMenuItem menuBuzzer(&minfoBuzzer, false, &menuSettings);
+const PROGMEM BooleanMenuInfo minfoHeatLamp = { "Heat Lamp", 7, 0xffff, 1, NO_CALLBACK, NAMING_ON_OFF };
+BooleanMenuItem menuHeatLamp(&minfoHeatLamp, false, &menuBuzzer);
 const PROGMEM AnalogMenuInfo minfoTemp = { "Temp", 1, 0xffff, 255, NO_CALLBACK, 0, 2, "oC" };
-AnalogMenuItem menuTemp(&minfoTemp, 0, &menuFan);
+AnalogMenuItem menuTemp(&minfoTemp, 0, &menuHeatLamp);
 
 void setupMenu() {
     // First we set up eeprom and authentication (if needed).
     menuMgr.setEepromRef(&glAvrRom);
     // Now add any readonly, non-remote and visible flags.
     menuTemp.setReadOnly(true);
-    menuFan.setReadOnly(true);
     menuBuzzer.setReadOnly(true);
     menuHeatLamp.setReadOnly(true);
 
