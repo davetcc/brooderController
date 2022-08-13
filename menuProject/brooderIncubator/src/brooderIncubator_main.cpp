@@ -44,7 +44,7 @@ void setup() {
 
     roomTemp.begin();
     roomTemp.setWaitForConversion(false);
-    taskManager.scheduleFixedRate(1000, []() {
+    taskManager.scheduleFixedRate(500, []() {
         if(tempRequested) {
             float deg = roomTemp.getTempCByIndex(0);
             if(deg > 0.0F) {
@@ -52,7 +52,7 @@ void setup() {
 
                 auto allowableError = menuSettingsAccuracy.getAsFloatingPointValue();
                 auto tempUser = menuSettingsReqdTemp.getAsFloatingPointValue();
-                bool lampNeeded = deg < (tempUser - allowableError);
+                bool lampNeeded = menuHeatLamp.getBoolean() ? (deg < (tempUser)) : deg < (tempUser - allowableError);
                 menuHeatLamp.setBoolean(lampNeeded);
                 digitalWrite(HEATER_PIN, lampNeeded);
                 menuTemp.setFromFloatingPointValue(deg);
@@ -61,7 +61,8 @@ void setup() {
                 bool buzzerRequired = deg > (tempUser + unacceptableError) || deg < (tempUser - unacceptableError);
                 menuBuzzer.setBoolean(buzzerRequired);
                 if(buzzerRequired && menuSettingsEnableBuzzer.getBoolean()) {
-                    analogWrite(SPEAKER_PIN, currentSpeakerValue == 128 ? 85 : currentSpeakerValue == 85 ? 0 : 128);
+                    currentSpeakerValue = currentSpeakerValue == 128 ? 85 : currentSpeakerValue == 85 ? 0 : 128;
+                    analogWrite(SPEAKER_PIN, currentSpeakerValue);
                 } else {
                     analogWrite(SPEAKER_PIN, 0);
                 }
@@ -88,12 +89,13 @@ void loop() {
     taskManager.runLoop();
 }
 
-const char pgmSavedText[] = "Settings saved";
+const char pgmSettings[] PROGMEM = "Settings ";
 
 void CALLBACK_FUNCTION onSaveSettings(int /*id*/) {
     menuMgr.save(0xfade);
     auto dlg = renderer.getDialog();
     if(dlg->isInUse()) return;
     dlg->setButtons(BTNTYPE_CLOSE, BTNTYPE_NONE);
-    dlg->show(pgmSavedText, false);
+    dlg->show(pgmSettings, false);
+    dlg->copyIntoBuffer("saved");
 }
