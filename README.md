@@ -15,3 +15,17 @@ The project is split into three sections:
 * menuProject - contains a tcMenu based sketch that builds in platformIO.
 
 In terms of wood working, the main cabinet is made out of regular WPB plywood, stained to the outside, painted white to the inside. The door is made from solid cedar wood, and the wooden part of the control panel was made from an offcut of solid 19mm oak. In terms of sizes you can work with whatever suits your situation, I went with approximately 400mm deep, 650mm wide, and approx 430mm high.
+
+## Insulation 
+
+Obviously there's a heater in this design, so it is best to insulate the unit at least to some extent to save energy. I am trying boards I found a craft shop that are foam in the middle with a gloss layer to the outside, these foam boards seem quite good at insulating. Here's a photo:
+
+![Foam board insulation](designs/insulation-example.jpg)
+
+## Power supply entry
+
+This device runs on 240V mains, it is absolutely essential that the power entry is safely managed, with an appropriate fuse and switch. I used an all in one unit, along with the panel that is in the designs/power directory, it is a free cad design. Again, as I said earlier, this project uses mains voltages, unless you are experienced in electronics, and used to working with live AC voltages, it is better not to attempt this project.
+
+![Power entry panel](designs/power-entry.jpg)
+
+There's a few more images and design documents in the designs folder.
